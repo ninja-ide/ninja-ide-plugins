@@ -1,0 +1,22 @@
+{
+    "keyword": "#6EC7D7",
+    "operator": "#FFFFFF",
+    "brace": "#FFFFFF",
+    "definition": "#F6EC2A",
+    "string": "#B369BF",
+    "string2": "#80FF80",
+    "comment": "#80FF80",
+    "properObject": "#6EC7D7",
+    "numbers": "#F8A008",
+    "spaces": "#FFFFFF",
+    "extras": "orange",
+    "editor-background": "#1E1E1E",
+    "editor-selection-color": "#FFFFFF",
+    "editor-selection-background": "#437DCD",
+    "editor-text": "#B3BFA7",
+    "current-line": "#858585",
+    "selected-word": "#009B00",
+    "fold-area": "#FFFFFF",
+    "fold-arrow": "#454545",
+    "linkNavigate":"orange"
+}

@@ -1,0 +1,17 @@
+{
+  "pastebin": [
+    "Plugin that allow you to publish your code in Pastebin", 
+    "1.0",
+    "https://plugins.ninja-ide.googlecode.com/hg/repo/pastebin.zip"
+  ],
+  "pluginProject": [
+    "This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!",
+    "1.4",
+    "https://plugins.ninja-ide.googlecode.com/hg/repo/pluginProject.zip"
+  ],
+  "classCompleter": [
+    "This Plugin create the constructor of the Class automatically",
+    "0.5",
+    "https://plugins.ninja-ide.googlecode.com/hg/repo/classCompleter.zip"
+  ]
+}

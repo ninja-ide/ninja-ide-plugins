@@ -1,0 +1,21 @@
+{
+    "keyword": "#FDE15D",
+    "operator": "#FF7729",
+    "brace": "#858585",
+    "definition": "#FFFFFF",
+    "string": "#5ED363",
+    "string2": "#5ED363",
+    "comment": "#666666",
+    "properObject": "#9CB6D4",
+    "numbers": "#DB5000",
+    "spaces": "#BFBFBF",
+    "extras": "orange",
+    "editor-background": "#0C152B",
+    "editor-selection-color": "white",
+    "editor-selection-background": "#437DCD",
+    "editor-text": "#FFFFFF",
+    "current-line": "blue",
+    "selected-word": "green",
+    "fold-area": "white",
+    "fold-arrow": "darkGray"
+}

@@ -1,0 +1,21 @@
+{
+    "keyword": "#E0FFFF",
+    "operator": "#E0FFFF",
+    "brace": "#8B864E",
+    "definition": "#8F8B36",
+    "string": "#54FF9F",
+    "string2": "#4EEE94",
+    "comment": "#4A708B",
+    "properObject": "#1E27E3",
+    "numbers": "#FF3030",
+    "spaces": "green",
+    "extras": "red",
+    "editor-background": "black",
+    "editor-selection-color": "black",
+    "editor-selection-background": "#00FF00",
+    "editor-text": "green",
+    "current-line": "#53868B",
+    "selected-word": "#8B6969",
+    "fold-area": "#FFFFFF",
+    "fold-arrow": "#5C1B26"
+}

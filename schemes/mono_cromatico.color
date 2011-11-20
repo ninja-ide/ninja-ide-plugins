@@ -1,0 +1,21 @@
+{
+    "keyword": "black",
+    "operator": "grey",
+    "brace": "black",
+    "definition": "black",
+    "string": "grey",
+    "string2": "grey",
+    "comment": "black",
+    "properObject": "black",
+    "numbers": "black",
+    "spaces": "white",
+    "extras": "black",
+    "editor-background": "white",
+    "editor-selection-color": "grey",
+    "editor-selection-background": "black",
+    "editor-text": "black",
+    "current-line": "black",
+    "selected-word": "black",
+    "fold-area": "black",
+    "fold-arrow": "black"
+}
