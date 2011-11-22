@@ -1,4 +1,4 @@
-# *-* coding: UTF-8 *-*
+# -*- coding: UTF-8 -*-
 
 import os
 try:
@@ -25,7 +25,7 @@ class PluginProject(plugin.Plugin):
     def initialize(self):
         global PROJECT_TYPE
         self.explorer_s = self.locator.get_service('explorer')
-        #set a project handler for NINJA-IDE Plugin
+        # Set a project handler for NINJA-IDE Plugin
         self.explorer_s.set_project_type_handler(PROJECT_TYPE,
                 PluginProjectHandler(self.locator))
 
@@ -46,7 +46,7 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
     def on_wizard_finish(self, wizard):
         global PROJECT_TYPE
         ids = wizard.pageIds()
-        #manipulate default data for NINJA-IDE projects
+        # Manipulate default data for NINJA-IDE projects
         page = wizard.page(ids[2])
         place = str(page.txtPlace.text())
         if place == '':
@@ -66,14 +66,14 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
         project['license'] = unicode(page.cboLicense.currentText())
         project['venv'] = unicode(page.vtxtPlace.text())
 
-        #manipulate plugin project data
+        # Manipulate plugin project data
         page = wizard.page(ids[1])
 
         json_manager.create_ninja_project(path, name, project)
 
         plugin_dict = self.create_descriptor(page, path)
         self.create_plugin_class(page, path, plugin_dict)
-        #load the project!
+        # Load the project!
         wizard._load_project(path)
 
     def create_descriptor(self, page, path):
@@ -91,16 +91,16 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
         plugin['version'] = version
 
         fileName = os.path.join(path, module + self.EXT)
-        #create the .plugin file with metadata
+        # Create the .plugin file with metadata
         self.create_file(fileName, plugin)
-        #return the dictionary
+        # Return the dictionary
         return plugin
 
     def create_plugin_class(self, page, path, plugin_dict):
         module = plugin_dict['module']
         className = plugin_dict['class']
         completed = False
-        #Start the template
+        # Start the template
         content = TEMPLATE_PLUGIN_BEGIN % className
 
         if page.checkEditorS.checkState() == Qt.Checked:
@@ -128,13 +128,13 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
 
         content += TEMPLATE_PLUGIN_FINISH
         content = QString(content)
-        #create the folder
+        # Create the folder
         file_manager.create_folder(os.path.join(path, module))
-        #create the file
+        # Create the file
         fileName = os.path.join(os.path.join(path, module), module + '.py')
-        #write to the file
+        # Write to the file
         file_manager.store_file_content(fileName, content)
-        #create the __init__.py with the imports!
+        # Create the __init__.py with the imports!
         file_manager.create_init_file_complete(os.path.join(path, module))
 
     def create_file(self, fileName, structure):
@@ -147,14 +147,14 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
 # TEMPLATES
 ###############################################################################
 
-TEMPLATE_PLUGIN_BEGIN = """# *-* coding: UTF-8 *-*
+TEMPLATE_PLUGIN_BEGIN = """# -*- coding: UTF-8 -*-
 
 from ninja_ide.core import plugin
 
 
 class %s(plugin.Plugin):
     def initialize(self):
-        #Init your plugin"""
+        # Init your plugin"""
 
 TEMPLATE_PASS_STATMENT = """
         pass"""
@@ -177,9 +177,10 @@ TEMPLATE_EXPLORER_S = """
 TEMPLATE_PLUGIN_FINISH = """
 
     def finish(self):
-        #Shutdown your plugin
+        # Shutdown your plugin
         pass
 
     def get_preferences_widget(self):
-        #Return a widget for customize yor plugin
-        pass"""
+        # Return a widget for customize yor plugin
+        pass
+"""
