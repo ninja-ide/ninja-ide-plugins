@@ -181,6 +181,6 @@ TEMPLATE_PLUGIN_FINISH = """
         pass
 
     def get_preferences_widget(self):
-        # Return a widget for customize yor plugin
+        # Return a widget for customize your plugin
         pass
 """

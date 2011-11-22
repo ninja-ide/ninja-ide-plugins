@@ -2,25 +2,18 @@
 
 from PyQt4.QtGui import QWizardPage
 from PyQt4.QtGui import QGridLayout
-from PyQt4.QtGui import QHBoxLayout
 from PyQt4.QtGui import QLabel
 from PyQt4.QtGui import QLineEdit
-from PyQt4.QtGui import QPlainTextEdit
 from PyQt4.QtGui import QCheckBox
-from PyQt4.QtGui import QPushButton
-from PyQt4.QtGui import QFileDialog
-from PyQt4.QtGui import QMessageBox
-from PyQt4.QtCore import SIGNAL
-from PyQt4.QtCore import Qt
 
 
 class PagePluginProperties(QWizardPage):
 
     def __init__(self, locator):
         QWizardPage.__init__(self)
-        #service locator
+        # service locator
         self.locator = locator
-        #grid
+        # grid
         grid = QGridLayout(self)
         grid.addWidget(QLabel('Main Module:'), 0, 0)
         self.txtModule = QLineEdit()
@@ -45,7 +38,7 @@ class PagePluginProperties(QWizardPage):
         self.txtVersion = QLineEdit("0.1")
         grid.addWidget(self.txtVersion, 4, 1)
 
-        #Plugin services
+        # Plugin services
         grid.addWidget(QLabel('Services:'), 5, 0)
 
         self.checkEditorS = QCheckBox('Editor')
