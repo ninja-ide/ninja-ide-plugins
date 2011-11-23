@@ -1,0 +1,26 @@
+{
+    # maybe not 100% ok, but still best for me (aleki)
+    "editor-background": "#040404",
+    "editor-selection-color": "#FF9E59",
+    "editor-selection-background": "#3E3E3E",
+    "editor-text": "#b0b0b0",
+    "current-line": "#a5a5a5",
+
+    "definition": "#407040",
+    "keyword": "#733232",
+    "properObject": "#00B4B4",
+    
+    "operator": "#C4D61E",
+    "brace": "#F0691E",
+
+    "string": "#c030c0",
+    "string2": "#903590",
+    "comment": "#557AE9",
+    "numbers": "#FFD700",
+    "spaces": "#403a40",
+
+    "extras": "#FF0000",
+    "selected-word": "#806E54",
+    "fold-area": "#131313",
+    "fold-arrow": "#473D35"
+}
