@@ -2,7 +2,7 @@
   "module": "pluginProject",
   "class": "PluginProject",
   "authors": "Martin Alderete <malderete@ninja-ide.org>",
-  "version": "0.1",
+  "version": "0.2",
   "url": "http://ninja-ide.org",
   "description": "This NINJA Plugin allows to create Plugins for NINJA... Wow Recursive!"
 }

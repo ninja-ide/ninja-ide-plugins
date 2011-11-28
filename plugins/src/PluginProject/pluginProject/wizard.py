@@ -1,10 +1,13 @@
 # *-* coding: UTF-8 *-*
 
+import re
+
 from PyQt4.QtGui import QWizardPage
 from PyQt4.QtGui import QGridLayout
 from PyQt4.QtGui import QLabel
 from PyQt4.QtGui import QLineEdit
 from PyQt4.QtGui import QCheckBox
+from PyQt4.QtGui import QMessageBox
 
 
 class PagePluginProperties(QWizardPage):
@@ -55,3 +58,16 @@ class PagePluginProperties(QWizardPage):
 
         self.checkExplorerS = QCheckBox('Explorer')
         grid.addWidget(self.checkExplorerS, 7, 1)
+
+    def validatePage(self):
+        pat_module_name = re.compile("^[a-z_]+$")
+        pat_class_name = re.compile(r"([a-zA-Z_]+[0-9]*)+$")
+        if not pat_module_name.match(self.txtModule.text()):
+            QMessageBox.information(self, 'Validation error',
+                'The module name is invalid')
+            return False
+        if not pat_class_name.match(self.txtClass.text()):
+            QMessageBox.information(self, 'Validation error',
+                'The class name is invalid')
+            return False
+        return True
