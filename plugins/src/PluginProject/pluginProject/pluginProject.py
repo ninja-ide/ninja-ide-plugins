@@ -48,16 +48,11 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
         ids = wizard.pageIds()
         # Manipulate default data for NINJA-IDE projects
         page = wizard.page(ids[2])
-        place = str(page.txtPlace.text())
-        if place == '':
-            QMessageBox.critical(self, 'Incorrect Location',
-                'The project couldn\'t be create')
+        path = unicode(page.txtPlace.text())
+        if not path:
+            QMessageBox.critical(self, self.tr("Incorrect Location"),
+                self.tr("The project couldn\'t be create"))
             return
-        folder = str(page.txtFolder.text())
-        path = file_manager.create_path(place, folder)
-        if not file_manager.folder_exists(path):
-            file_manager.create_folder(path)
-
         project = {}
         name = unicode(page.txtName.text())
         project['name'] = name
@@ -68,7 +63,10 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
 
         # Manipulate plugin project data
         page = wizard.page(ids[1])
-
+        # Create a folder to contain all the project data (<path>/<name>/)
+        path = os.path.join(path, name)
+        file_manager.create_folder(path, add_init_file=False)
+        # Create the .nja file
         json_manager.create_ninja_project(path, name, project)
 
         plugin_dict = self.create_descriptor(page, path)
