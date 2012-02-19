@@ -18,5 +18,9 @@
     "selected-word": "#009B00",
     "fold-area": "#FFFFFF",
     "fold-arrow": "#454545",
-    "linkNavigate":"orange"
+    "linkNavigate":"orange",
+    "brace-background": "#5BC85B",
+    "brace-foreground": "red",
+    "error-underline": "red",
+    "pep8-underline": "yellow"
 }
