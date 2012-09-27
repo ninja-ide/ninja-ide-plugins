@@ -7,7 +7,6 @@ except ImportError:
     import simplejson as json
 
 from PyQt4.QtGui import QMessageBox
-from PyQt4.QtCore import QString
 from PyQt4.QtCore import Qt
 
 from ninja_ide.core import plugin
@@ -125,7 +124,7 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
             content += TEMPLATE_PASS_STATMENT
 
         content += TEMPLATE_PLUGIN_FINISH
-        content = QString(content)
+        content = content
         # Create the folder
         file_manager.create_folder(os.path.join(path, module))
         # Create the file
