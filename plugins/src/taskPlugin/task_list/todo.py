@@ -7,7 +7,6 @@ FIXME_REG = re.compile("#FIXME:(\s).")
 OPTIMIZE_REG = re.compile("#OPTIMIZE:(\s).")
 
 
-
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         f = sys.argv[1]
@@ -30,18 +29,18 @@ if __name__ == '__main__':
             fix_match = FIXME_REG.search(line)
             opti_match = OPTIMIZE_REG.search(line)
             if todo_match:
-                d["TODO"].append((n, line[todo_match.end()-1:]))
-                print line[todo_match.end()-1:]
+                d["TODO"].append((n, line[todo_match.end() - 1:]))
+                print line[todo_match.end() - 1:]
             elif fix_match:
-                d["FIXME"].append((n, line[fix_match.end()-1:]))
+                d["FIXME"].append((n, line[fix_match.end() - 1:]))
             elif opti_match:
-                d["OPTIMIZE"].append((n, line[opti_match.end()-1:]))
-            n+= 1
+                d["OPTIMIZE"].append((n, line[opti_match.end() - 1:]))
+            n += 1
         f.close()
         print "TODO(%s)" % len(d["TODO"])
         for t in d["TODO"]:
             print "    line: %s    text: %s" % (t[0], t[1].strip())
-        print "FIXME(%s)" % len(d["FIXME"]) 
+        print "FIXME(%s)" % len(d["FIXME"])
         for t in d["FIXME"]:
             print "    line: %s    text: %s" % (t[0], t[1].strip())
         print "OPTIMIZE(%s)" % len(d["OPTIMIZE"])
@@ -50,4 +49,3 @@ if __name__ == '__main__':
     else:
         print "You should provide a file"
         sys.exit(0)
-

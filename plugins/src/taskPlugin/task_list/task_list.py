@@ -4,7 +4,6 @@ import os
 import re
 
 from ninja_ide.core import plugin
-from PyQt4.QtCore import QStringList
 from PyQt4.QtCore import SIGNAL
 
 from PyQt4.QtGui import QIcon
@@ -37,9 +36,9 @@ class TaskWidget(QTreeWidget):
         self.locator = locator
         self._explorer_s = self.locator.get_service('explorer')
         self._main_s = self.locator.get_service('editor')
-        #on current tab changed
+        #on current tab changed refresh
         self._main_s.currentTabChanged.connect(self._on_tab_changed)
-        #on file saved
+        #on file saved refresh
         self._main_s.fileSaved.connect(self._on_file_saved)
 
         self.header().setHidden(True)
@@ -72,9 +71,9 @@ class TaskWidget(QTreeWidget):
     def _parse_tasks(self, source_code):
         self.clear()
         #create roots
-        todo_root = QTreeWidgetItem(self, QStringList('TODO'))
-        fixme_root = QTreeWidgetItem(self, QStringList('FIXME'))
-        optimize_root = QTreeWidgetItem(self, QStringList('OPTIMIZE'))
+        todo_root = QTreeWidgetItem(self, ['TODO'])
+        fixme_root = QTreeWidgetItem(self, ['FIXME'])
+        optimize_root = QTreeWidgetItem(self, ['OPTIMIZE'])
 
         lines = source_code.split("\n")
         lineno = 0
@@ -85,15 +84,15 @@ class TaskWidget(QTreeWidget):
             optimize_match = self.OPTIMIZE_REG.search(line)
             if todo_match:
                 content = line[todo_match.end() - 1:]
-                item = TaskItem(todo_root, QStringList(content), lineno)
+                item = TaskItem(todo_root, [content], lineno)
                 item.setIcon(0, QIcon(self.TASK_IMAGE))
             elif fixme_match:
                 content = line[fixme_match.end() - 1:]
-                item = TaskItem(fixme_root, QStringList(content), lineno)
+                item = TaskItem(fixme_root, [content], lineno)
                 item.setIcon(0, QIcon(self.TASK_IMAGE))
             elif optimize_match:
                 content = line[optimize_match.end() - 1:]
-                item = TaskItem(optimize_root, QStringList(content), lineno)
+                item = TaskItem(optimize_root, [content], lineno)
                 item.setIcon(0, QIcon(self.TASK_IMAGE))
 
             lineno += 1
