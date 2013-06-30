@@ -26,7 +26,8 @@ class PluginProject(plugin.Plugin):
         self.explorer_s = self.locator.get_service('explorer')
         # Set a project handler for NINJA-IDE Plugin
         self.explorer_s.set_project_type_handler(PROJECT_TYPE,
-                PluginProjectHandler(self.locator))
+                                                 PluginProjectHandler(self
+                                                 .locator))
 
 
 class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
@@ -37,7 +38,7 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
         self.locator = locator
 
     def get_context_menus(self):
-        return (Menu(self.locator), )
+        return Menu(self.locator),
 
     def get_pages(self):
         return [PagePluginProperties(self.locator)]
@@ -50,7 +51,7 @@ class PluginProjectHandler(plugin_interfaces.IProjectTypeHandler):
         path = unicode(page.txtPlace.text())
         if not path:
             QMessageBox.critical(self, self.tr("Incorrect Location"),
-                self.tr("The project couldn\'t be create"))
+                                 self.tr("The project couldn\'t be create"))
             return
         project = {}
         name = unicode(page.txtName.text())
