@@ -49,7 +49,7 @@ class TaskWidget(QTreeWidget):
         self.header().setStretchLastSection(False)
 
         self.connect(self, SIGNAL("itemClicked(QTreeWidgetItem *, int)"),
-            self._go_to_definition)
+                     self._go_to_definition)
 
     def _on_tab_changed(self):
         self.refresh_tasks()
