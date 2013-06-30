@@ -1,5 +1,6 @@
 import os
 
+
 def main():
     #TODO: agregar soporte de unicode
     a = 1
