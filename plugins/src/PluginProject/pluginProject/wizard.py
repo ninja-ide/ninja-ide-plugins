@@ -64,10 +64,10 @@ class PagePluginProperties(QWizardPage):
         pat_class_name = re.compile(r"([a-zA-Z_]+[0-9]*)+$")
         if not pat_module_name.match(self.txtModule.text()):
             QMessageBox.information(self, 'Validation error',
-                'The module name is invalid')
+                                    'The module name is invalid')
             return False
         if not pat_class_name.match(self.txtClass.text()):
             QMessageBox.information(self, 'Validation error',
-                'The class name is invalid')
+                                    'The class name is invalid')
             return False
         return True

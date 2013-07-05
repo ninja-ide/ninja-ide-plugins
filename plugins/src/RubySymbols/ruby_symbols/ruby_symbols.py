@@ -15,7 +15,7 @@ class RubySymbols(plugin.Plugin):
         self.explorer_s = self.locator.get_service('explorer')
         # Set a project handler for NINJA-IDE Plugin
         self.explorer_s.set_symbols_handler(EXTENSION,
-            RubySymbolsHandler())
+                                            RubySymbolsHandler())
 
 
 class RubySymbolsHandler(plugin_interfaces.ISymbolsHandler):

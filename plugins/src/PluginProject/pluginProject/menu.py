@@ -44,10 +44,12 @@ class Menu(QMenu):
             zipFile.close()
 
             QMessageBox.information(self, 'Package Created!',
-                'The package has been created in\nthe project folder.')
+                                    'The package has been created in\nthe '
+                                    'project folder.')
         except Exception, reason:
             QMessageBox.information(self, 'Package Failed!',
-                'The package has not been created in\nthe project folder.')
+                                    'The package has not been created '
+                                    'in\nthe project folder.')
 
     def dir_entries(self, dir_name, subdir, *args):
         fileList = []

@@ -17,9 +17,9 @@ if __name__ == '__main__':
             sys.exit(0)
 
         d = {
-                "TODO": [],
-                "FIXME": [],
-                "OPTIMIZE": []
+            "TODO": [],
+            "FIXME": [],
+            "OPTIMIZE": []
         }
         print "Buscando comentarios..."
         print
