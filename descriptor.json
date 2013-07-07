@@ -1,6 +1,6 @@
 {
   "pastebin": [
-    "Plugin that allow you to publish your code in Pastebin", 
+    "Plugin that allows you to publish your code in Pastebin",
     "1.0",
     "https://plugins.ninja-ide.googlecode.com/hg/repo/pastebin.zip"
   ],
@@ -10,7 +10,7 @@
     "https://plugins.ninja-ide.googlecode.com/hg/repo/pluginProject.zip"
   ],
   "classCompleter": [
-    "This Plugin create the constructor of the Class automatically",
+    "This Plugin creates the constructor of the Class automatically",
     "0.5",
     "https://plugins.ninja-ide.googlecode.com/hg/repo/classCompleter.zip"
   ]
