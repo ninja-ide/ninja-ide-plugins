@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 
+
 import os
 import re
 
 from ninja_ide.core import plugin
-from PyQt4.QtCore import SIGNAL
 
 from PyQt4.QtGui import QIcon
 from PyQt4.QtGui import QAbstractItemView
 from PyQt4.QtGui import QHeaderView
 from PyQt4.QtGui import QTreeWidget
 from PyQt4.QtGui import QTreeWidgetItem
+from PyQt4.QtGui import QDockWidget
 
-tasknames = ['TODO','FIXME','OPTIMIZE','TEST']
+tasknames = ['TODO', 'FIXME', 'OPTIMIZE', 'TEST']
+
 
 class TaskList(plugin.Plugin):
     def initialize(self):
@@ -21,28 +23,33 @@ class TaskList(plugin.Plugin):
         self.explorer_s = self.locator.get_service('explorer')
 
         #explorer
-        self._task_widget = TaskWidget(self.locator)
-        self.explorer_s.add_tab(self._task_widget, "Tasks")
+        self._task_widget, self.dock = TaskWidget(self.locator), QDockWidget()
+        self.dock.setWindowTitle("Tasks")
+        self.dock.setWidget(self._task_widget)
+        self.explorer_s.add_tab(self.dock, "Tasks")
+
 
 class TaskItem(QTreeWidgetItem):
     def __init__(self, parent, content, lineno):
         QTreeWidgetItem.__init__(self, parent, content)
         self.lineno = lineno
 
+
 class Task:
 
-    def __init__(self,parent,name):
+    def __init__(self, parent, name):
         self.name = name
         self.parent = parent
         self.reg = re.compile("#(\\s)*%s(\\s)*\\:(\\s)*." % name)
         self.root = QTreeWidgetItem(parent, [name])
 
-    def match(self,line,lineno):
+    def match(self, line, lineno):
         lmatch = self.reg.search(line)
         if lmatch:
-            content = line[lmatch.end() - 1:]
+            content = line[lmatch.end() - 1:][:75]
             item = TaskItem(self.root, [content], lineno)
             item.setIcon(0, QIcon(self.parent.TASK_IMAGE))
+
 
 class TaskWidget(QTreeWidget):
 
@@ -64,9 +71,9 @@ class TaskWidget(QTreeWidget):
         self.header().setHorizontalScrollMode(QAbstractItemView.ScrollPerPixel)
         self.header().setResizeMode(0, QHeaderView.ResizeToContents)
         self.header().setStretchLastSection(False)
+        self.setAlternatingRowColors(True)
 
-        self.connect(self, SIGNAL("itemClicked(QTreeWidgetItem *, int)"),
-            self._go_to_definition)
+        self.itemClicked.connect(self._go_to_definition)
 
     def _on_tab_changed(self):
         self.refresh_tasks()
@@ -90,13 +97,13 @@ class TaskWidget(QTreeWidget):
         #Task -regex and roots-
         ltasks = []
         for name in tasknames:
-            ltasks.append(Task(self,name))
+            ltasks.append(Task(self, name))
 
         lines = source_code.split("\n")
         lineno = 0
         for line in lines:
             #apply the regular expressions
             for task in ltasks:
-                task.match(line,lineno)
+                task.match(line, lineno)
             lineno += 1
         self.expandAll()
